@@ -1,0 +1,27 @@
+    name: Deploy to Cloudflare Pages
+
+    on:
+      push:
+        branches:
+          - main  # 或者你的主分支名称
+
+    jobs:
+      deploy:
+        runs-on: ubuntu-latest
+        permissions:
+          contents: read
+          deployments: write
+        name: Deploy
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v3
+
+          - name: Publish to Cloudflare Pages
+            uses: cloudflare/pages-action@v1
+            with:
+              apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+              accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+              projectName: my-aes-tool # 你的项目名称
+              directory: .
+              # Optional: Enable this if you want to have GitHub Deployments triggered
+              # gitHubToken: ${{ secrets.GITHUB_TOKEN }}
