@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AES 加解密工具</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>AES 加解密工具</h1>
+        <div class="input-group">
+            <label for="plaintext">明文/密文:</label>
+            <textarea id="plaintext"></textarea>
+        </div>
+        <div class="input-group">
+            <label for="key">密钥 (KEY):</label>
+            <input type="text" id="key">
+            <p class="info">KEY 会自动在尾部填充 0 直到长度达到 16/24/32 字节。</p>
+        </div>
+        <div class="input-group">
+            <label for="iv">初始向量 (IV):</label>
+            <input type="text" id="iv">
+            <p class="info">IV 会自动在尾部填充 0 直到长度达到 16 字节。</p>
+        </div>
+        <div class="info-group">
+            <label>填充后的 KEY:</label>
+            <span id="paddedKeyDisplay"></span>
+        </div>
+        <div class="info-group">
+            <label>填充后的 IV:</label>
+            <span id="paddedIvDisplay"></span>
+        </div>
+        <div class="info-group">
+            <label>加密模式:</label>
+            <span id="modeDisplay">CBC (Pkcs7 填充)</span>
+        </div>
+        <div class="button-group">
+            <button id="encryptBtn">加密</button>
+            <button id="decryptBtn">解密</button>
+        </div>
+        <div class="input-group">
+            <label for="result">结果:</label>
+            <textarea id="result" readonly></textarea>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
